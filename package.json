@@ -2,16 +2,19 @@
   "name": "third-party-login",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://github.com/do1fendi/third-party-login/",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "deploy":"next build && next export && gh-pages -d out -t true"
   },
   "dependencies": {
     "@types/node": "18.14.6",
     "@types/react": "18.0.28",
     "@types/react-dom": "18.0.11",
+    "gh-pages": "^5.0.0",
     "jwt-decode": "^3.1.2",
     "next": "13.2.3",
     "react": "18.2.0",

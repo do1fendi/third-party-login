@@ -14,12 +14,12 @@ export function Google(props: IGoogleProps) {
   };
   useEffect(() => {
     /* global google */
-    google.accounts.id.initialize({
+    (window as any).google.accounts.id.initialize({
       client_id: props.clientId,
       callback: handleResponse,
     });
 
-    google.accounts.id.renderButton(document.getElementById("btn"), {
+    (window as any).google.accounts.id.renderButton(document.getElementById("btn"), {
       theme: "outline",
       size: "large",
     });

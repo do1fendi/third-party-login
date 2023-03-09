@@ -1,6 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
+  trailingSlash: true,
+  basePath: "",
+  assetPrefix: "/third-party-login",
 }
 
 module.exports = nextConfig

@@ -8,32 +8,48 @@ export interface IFacebookProps {
 
 export function Facebook(props: IFacebookProps) {
   useEffect(() => {
-    window.fbAsyncInit = function () {
-      FB.init({
+    (window as any).fbAsyncInit = function () {
+      (window as any).FB.init({
         appId: props.appId,
         cookie: true,
         xfbml: true,
-        version: "v16.0",
+        version: "v10.0",
       });
 
-      FB.AppEvents.logPageView();
+      (window as any).FB.AppEvents.logPageView();
+      (window as any).FB.getLoginStatus(function (response: any) {
+        // Called after the JS SDK has been initialized.
+        statusChangeCallback(response); // Returns the login status.
+      });
     };
 
-    // (function (d, s, id) {
-    //   var js,
-    //     fjs = d.getElementsByTagName(s)[0];
-    //   if (d.getElementById(id)) {
-    //     return;
-    //   }
-    //   js = d.createElement(s);
-    //   js.id = id;
-    //   js.src = "https://connect.facebook.net/en_US/sdk.js";
-    //   fjs.parentNode.insertBefore(js, fjs);
-    // })(document, "script", "facebook-jssdk");
+    (window as any).testAPI = function () {
+      console.log("Welcome!  Fetching your information.... ");
+      (window as any).FB.api(
+        "/me?fields=id,name,email",
+        function (response: any) {
+          console.log(response);
+        }
+      );
+    };
   }, []);
-  const checkLoginState = (response: any) => {
-    console.log(response);
-  };
+
+  
+
+  function checkLoginState() {
+    // Called when a person is finished with the Login Button.
+    (window as any).FB.getLoginStatus(function (response: any) {
+      // See the onlogin handler
+      statusChangeCallback(response);
+    });
+  }
+
+  function statusChangeCallback(response: any) {
+    // Called with the results from FB.getLoginStatus().
+    console.log("statusChangeCallback");
+    console.log(response); // The current login status of the person.
+  }
+
   return (
     <>
       <Script
@@ -49,10 +65,12 @@ export function Facebook(props: IFacebookProps) {
         data-size="large"
         data-button-type="login_with"
         data-layout=""
-        data-auto-logout-link="false"
-        data-use-continue-as="false"
-        data-scope="public_profile, email"
+        data-auto-logout-link="true"
+        data-use-continue-as="true"
+        data-scope="public_profile,email"
+        data-onlogin="testAPI();"
       ></div>
+      {/* <button onClick={testAPI}>check FACEBOOK login</button> */}
     </>
   );
 }
