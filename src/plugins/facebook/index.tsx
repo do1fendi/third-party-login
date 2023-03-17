@@ -34,8 +34,6 @@ export function Facebook(props: IFacebookProps) {
     };
   }, []);
 
-  
-
   function checkLoginState() {
     // Called when a person is finished with the Login Button.
     (window as any).FB.getLoginStatus(function (response: any) {

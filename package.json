@@ -4,7 +4,7 @@
   "private": true,
   "homepage": "https://github.com/do1fendi/third-party-login/",
   "scripts": {
-    "dev": "next dev",
+    "dev": "set HTTPS=true && next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",

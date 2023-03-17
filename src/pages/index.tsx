@@ -2,6 +2,7 @@ import Head from "next/head";
 import { Inter } from "next/font/google";
 import { Google } from "@/plugins/google";
 import { Facebook } from "@/plugins/facebook";
+import Line from "@/plugins/line";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,6 +23,7 @@ export default function Home() {
         ></Google>
 
         <Facebook appId={"300479674903257"}></Facebook>
+        <Line></Line>
       </div>
     </>
   );
