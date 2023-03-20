@@ -34,11 +34,15 @@ export function Facebook(props: IFacebookProps) {
     };
   }, []);
 
-  function checkLoginState() {
-    // Called when a person is finished with the Login Button.
-    (window as any).FB.getLoginStatus(function (response: any) {
-      // See the onlogin handler
-      statusChangeCallback(response);
+  function loginFb() {
+    (window as any).FB.login(function (response: any) {
+      if (response.status === "connected") {
+        // Logged into your webpage and Facebook.
+        console.log(response);
+      } else {
+        // The person is not logged into your webpage or we are unable to tell.
+        console.log(response);
+      }
     });
   }
 
@@ -68,7 +72,7 @@ export function Facebook(props: IFacebookProps) {
         data-scope="public_profile,email"
         data-onlogin="testAPI();"
       ></div>
-      {/* <button onClick={testAPI}>check FACEBOOK login</button> */}
+      <button onClick={() => loginFb()}>check FACEBOOK login</button>
     </>
   );
 }
