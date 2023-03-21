@@ -2,6 +2,7 @@ import Head from "next/head";
 import Script from "next/script";
 import { useEffect } from "react";
 import jwtDecode from "jwt-decode";
+import Button from "@/components/Button";
 
 export interface IGoogleProps {
   clientId: String;
@@ -19,10 +20,13 @@ export function Google(props: IGoogleProps) {
       callback: handleResponse,
     });
 
-    (window as any).google.accounts.id.renderButton(document.getElementById("btn"), {
-      theme: "outline",
-      size: "large",
-    });
+    (window as any).google.accounts.id.renderButton(
+      document.getElementById("btn"),
+      {
+        theme: "outline",
+        size: "large",
+      }
+    );
   }, []);
   return (
     <>
@@ -32,7 +36,9 @@ export function Google(props: IGoogleProps) {
         defer
         strategy="beforeInteractive"
       ></Script>
-      <div id="btn"></div>
+      <div id="btn">
+        <Button />
+      </div>
     </>
   );
 }

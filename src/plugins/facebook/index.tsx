@@ -1,6 +1,7 @@
 import Script from "next/script";
 import Head from "next/head";
 import { useEffect } from "react";
+import Button from "@/components/Button";
 
 export interface IFacebookProps {
   appId: String;
@@ -61,7 +62,7 @@ export function Facebook(props: IFacebookProps) {
         src="https://connect.facebook.net/en_US/sdk.js"
         nonce="29GfDbm6"
       ></Script>
-      <div
+      {/* <div
         className="fb-login-button"
         data-width=""
         data-size="large"
@@ -71,8 +72,9 @@ export function Facebook(props: IFacebookProps) {
         data-use-continue-as="true"
         data-scope="public_profile,email"
         data-onlogin="testAPI();"
-      ></div>
-      <button onClick={() => loginFb()}>check FACEBOOK login</button>
+      ></div> */}
+      {/* <button onClick={() => loginFb()}>check FACEBOOK login</button> */}
+      <Button text="Login Facebook" />
     </>
   );
 }
