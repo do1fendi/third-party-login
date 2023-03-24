@@ -28,6 +28,7 @@ export function Google(props: IGoogleProps) {
       }
     );
   }, []);
+
   return (
     <>
       <Script
@@ -36,9 +37,8 @@ export function Google(props: IGoogleProps) {
         defer
         strategy="beforeInteractive"
       ></Script>
-      <div id="btn">
-        <Button />
-      </div>
+      <div id="btn"></div>
+      {/* <Button onClick={() => googleLogin()} text="Testing Google" /> */}
     </>
   );
 }

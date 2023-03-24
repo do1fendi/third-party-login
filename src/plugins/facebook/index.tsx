@@ -36,15 +36,21 @@ export function Facebook(props: IFacebookProps) {
   }, []);
 
   function loginFb() {
-    (window as any).FB.login(function (response: any) {
-      if (response.status === "connected") {
-        // Logged into your webpage and Facebook.
-        console.log(response);
-      } else {
-        // The person is not logged into your webpage or we are unable to tell.
-        console.log(response);
-      }
-    });
+    (window as any).FB.login(
+      function (response: any) {
+        if (response.status === "connected") {
+          // Logged into your webpage and Facebook.
+          console.log(response);
+          (window as any).FB.api("/me", function (res: any) {
+            console.log(res);
+          });
+        } else {
+          // The person is not logged into your webpage or we are unable to tell.
+          console.log(response);
+        }
+      },
+      { scope: "email", return_scopes: true }
+    );
   }
 
   function statusChangeCallback(response: any) {
@@ -72,9 +78,11 @@ export function Facebook(props: IFacebookProps) {
         data-use-continue-as="true"
         data-scope="public_profile,email"
         data-onlogin="testAPI();"
-      ></div> */}
-      {/* <button onClick={() => loginFb()}>check FACEBOOK login</button> */}
-      <Button text="Login Facebook" />
+      ></div>
+      <button onClick={() => loginFb()}>check FACEBOOK login</button> */}
+      <div onClick={() => loginFb()}>
+        <Button text="Login Facebook" />
+      </div>
     </>
   );
 }
