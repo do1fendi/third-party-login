@@ -42,7 +42,7 @@ export function Facebook(props: IFacebookProps) {
           // Logged into your webpage and Facebook.
           console.log(response);
           (window as any).FB.api(
-            "/me?fields=id,name,email",
+            "/me?fields=id,first_name,last_name,email",
             function (res: any) {
               console.log(res);
             }
