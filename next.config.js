@@ -2,7 +2,7 @@
 const nextConfig = {
   trailingSlash: true,
   // basePath: "/third-party-login",
-  // assetPrefix: "/third-party-login",
+  assetPrefix: "/third-party-login",
   images: {
     domains: ["localhost", "www.taiwanviptravel.com", "do1fendi.github.io"],
     unoptimized: true,
