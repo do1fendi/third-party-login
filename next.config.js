@@ -8,8 +8,8 @@ const nextConfig = {
     unoptimized: true,
   },
   env: {
-    // BASEURL: "https://do1fendi.github.io/third-party-login",
-    BASEURL: "http://localhost:3000",
+    BASEURL: "https://do1fendi.github.io/third-party-login",
+    // BASEURL: "http://localhost:3001",
   },
 };
 

@@ -22,7 +22,7 @@ export default function Home() {
           }
         ></Google>
 
-        <Facebook appId={"300479674903257"}></Facebook>
+        <Facebook appId={"746859163687935"}></Facebook>
         <Line></Line>
       </div>
     </>

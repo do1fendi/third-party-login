@@ -14,7 +14,7 @@ export function Facebook(props: IFacebookProps) {
         appId: props.appId,
         cookie: true,
         xfbml: true,
-        version: "v10.0",
+        version: "v16.0",
       });
 
       (window as any).FB.AppEvents.logPageView();
@@ -27,7 +27,7 @@ export function Facebook(props: IFacebookProps) {
     (window as any).testAPI = function () {
       console.log("Welcome!  Fetching your information.... ");
       (window as any).FB.api(
-        "/me?fields=id,name,email",
+        "/me?fields=id,first_name,last_name,email",
         function (response: any) {
           console.log(response);
         }
@@ -41,9 +41,12 @@ export function Facebook(props: IFacebookProps) {
         if (response.status === "connected") {
           // Logged into your webpage and Facebook.
           console.log(response);
-          (window as any).FB.api("/me", function (res: any) {
-            console.log(res);
-          });
+          (window as any).FB.api(
+            "/me?fields=id,name,email",
+            function (res: any) {
+              console.log(res);
+            }
+          );
         } else {
           // The person is not logged into your webpage or we are unable to tell.
           console.log(response);
